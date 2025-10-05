@@ -31,3 +31,17 @@ Help people make informed financial decisions by providing transparent, easy-to-
 npm install
 npm run dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+## 📝 License
+
+MIT
+
+## 🤝 Contributing
+
+This is a personal project, but feedback is welcome! Open an issue or reach out.
+
+---
+
+Built with ❤️ by Yeun Kim
