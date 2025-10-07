@@ -96,6 +96,9 @@ export interface ScenarioOutputs {
   /** Net home equity after selling costs */
   netHomeEquity: number;
 
+  /** Net result for buying: Final equity minus pure expenses (interest, tax, HOA, maintenance, selling costs) */
+  netResultBuying: number;
+
   // Renting Scenario Results
   /** Total rent paid over the time horizon */
   totalRentPaid: number;
@@ -108,6 +111,15 @@ export interface ScenarioOutputs {
 
   /** Monthly rent at the end of the time horizon */
   finalMonthlyRent: number;
+
+  /** Total monthly contributions invested from the cost difference */
+  totalMonthlyContributions: number;
+
+  /** Average monthly contribution invested */
+  averageMonthlyContribution: number;
+
+  /** Net result for renting: Final portfolio minus pure expenses (rent paid) */
+  netResultRenting: number;
 
   // Comparison Results
   /** Net difference in wealth (positive = buying wins, negative = renting wins) */

@@ -9,6 +9,20 @@ import {
 /**
  * Calculates and compares the financial outcomes of buying vs renting over a time horizon.
  *
+ * BUYING SCENARIO:
+ * - Use down payment to buy home, take out mortgage for remainder
+ * - Each month: pay P&I, property tax, HOA, maintenance (minus tax savings)
+ * - Track: mortgage balance decreasing, equity building
+ * - Final wealth: Home market value - remaining mortgage - selling costs
+ *
+ * RENTING SCENARIO:
+ * - Invest the down payment amount immediately in the market
+ * - Each month: pay rent (expense only, like HOA for buyers)
+ * - Investment portfolio compounds at investmentReturnRate
+ * - Final wealth: Investment portfolio value
+ *
+ * These are independent scenarios - buying costs do not affect renter's portfolio.
+ *
  * @param inputs - The scenario parameters
  * @returns Complete financial analysis results for both buying and renting
  */
@@ -33,8 +47,9 @@ export function calculateScenario(inputs: ScenarioInputs): ScenarioOutputs {
 
   // Initialize accumulators for renting scenario
   let totalRentPaid = 0;
-  let investmentPortfolio = downPayment + closingCosts; // Initial investment (money not spent on buying)
-  let totalInvested = investmentPortfolio;
+  const initialInvestment = downPayment + closingCosts; // Initial investment (money not spent on buying)
+  let investmentPortfolio = initialInvestment;
+  let totalMonthlyContributions = 0; // Track monthly investments from the difference
 
   // Current values that change over time
   let currentHomeValue = inputs.homePrice;
@@ -94,10 +109,6 @@ export function calculateScenario(inputs: ScenarioInputs): ScenarioOutputs {
     totalMaintenance += monthlyMaintenance;
     totalTaxSavings += monthlyTaxSavings;
 
-    // Total monthly cost for owner (after tax savings)
-    const totalMonthlyCost =
-      monthlyPI + monthlyPropertyTax + monthlyHOA + monthlyMaintenance - monthlyTaxSavings;
-
     // === RENTING SCENARIO ===
 
     // Update rent annually
@@ -108,27 +119,24 @@ export function calculateScenario(inputs: ScenarioInputs): ScenarioOutputs {
     // Accumulate rent paid
     totalRentPaid += currentRent;
 
-    // Calculate investment contribution (difference between owner cost and rent)
-    const monthlyInvestmentContribution = totalMonthlyCost - currentRent;
+    // Calculate total owner cost for this month
+    const totalOwnerCost = monthlyPI + monthlyPropertyTax + monthlyHOA + monthlyMaintenance - monthlyTaxSavings;
 
-    // If owner costs more than rent, renter invests the difference
-    if (monthlyInvestmentContribution > 0) {
-      totalInvested += monthlyInvestmentContribution;
+    // Calculate monthly difference (equal monthly budget assumption)
+    const monthlyDifference = totalOwnerCost - currentRent;
+
+    // If buying costs more, renter invests the difference
+    let monthlyInvestment = 0;
+    if (monthlyDifference > 0) {
+      monthlyInvestment = monthlyDifference;
+      totalMonthlyContributions += monthlyInvestment;
     }
 
     // Compound investment portfolio
     investmentPortfolio *= (1 + monthlyInvestmentRate);
 
-    // Add monthly contribution to portfolio
-    if (monthlyInvestmentContribution > 0) {
-      investmentPortfolio += monthlyInvestmentContribution;
-    } else {
-      // If renting costs more, subtract from portfolio
-      investmentPortfolio += monthlyInvestmentContribution; // Will be negative
-    }
-
-    // Portfolio can't go negative
-    if (investmentPortfolio < 0) investmentPortfolio = 0;
+    // Add monthly investment to portfolio
+    investmentPortfolio += monthlyInvestment;
   }
 
   // === FINAL CALCULATIONS ===
@@ -156,10 +164,24 @@ export function calculateScenario(inputs: ScenarioInputs): ScenarioOutputs {
   // Investment portfolio value
   const investmentPortfolioValue = investmentPortfolio;
 
+  // Calculate average monthly contribution
+  const averageMonthlyContribution = totalMonthlyContributions / totalMonths;
+
+  // === NET RESULT CALCULATIONS ===
+
+  // BUYING: Final equity minus pure expenses (money that's gone forever)
+  // Pure expenses = interest + property tax + HOA + maintenance + selling costs - tax savings
+  const pureExpensesBuying = totalInterestPaid + totalPropertyTax + totalHOA + totalMaintenance + sellingCosts - totalTaxSavings;
+  const netResultBuying = netHomeEquity - pureExpensesBuying;
+
+  // RENTING: Final portfolio minus pure expenses (money that's gone forever)
+  // Pure expenses = rent paid (initial investment and monthly contributions are already in the portfolio)
+  const netResultRenting = investmentPortfolioValue - totalRentPaid;
+
   // === COMPARISON ===
 
   // Net difference (positive = buying wins, negative = renting wins)
-  const netDifference = netHomeEquity - investmentPortfolioValue;
+  const netDifference = netResultBuying - netResultRenting;
 
   // Determine winner
   let winner: 'buy' | 'rent' | 'tie';
@@ -187,12 +209,16 @@ export function calculateScenario(inputs: ScenarioInputs): ScenarioOutputs {
     homeFutureValue,
     remainingMortgageBalance,
     netHomeEquity,
+    netResultBuying,
 
     // Renting results
     totalRentPaid,
-    totalInvested,
+    totalInvested: initialInvestment,
     investmentPortfolioValue,
     finalMonthlyRent,
+    totalMonthlyContributions,
+    averageMonthlyContribution,
+    netResultRenting,
 
     // Comparison
     netDifference,
