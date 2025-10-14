@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     icon: '/logo.svg',
     apple: '/logo.svg',
   },
+  verification: {
+    other: {
+      'impact-site-verification': '9da8987c-9e80-4205-9a4f-038bb1300622'
+    }
+  }
 };
 
 export default function RootLayout({
