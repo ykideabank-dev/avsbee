@@ -17,32 +17,16 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               Make Smarter Money Decisions
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Free calculators for life&apos;s biggest financial choices
+            <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
+              Free calculators for life&apos;s financial choices
             </p>
-
-            {/* Feature Badges */}
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <div className="flex items-center gap-2 text-gray-700">
-                <span className="text-green-600 font-semibold">✓</span>
-                <span className="font-medium">Free</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <span className="text-green-600 font-semibold">✓</span>
-                <span className="font-medium">Private</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <span className="text-green-600 font-semibold">✓</span>
-                <span className="font-medium">Evidence-Based</span>
-              </div>
-            </div>
           </div>
         </section>
 
         {/* Calculators Section */}
         <section className="py-16 sm:py-20 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-12">
               Choose Your Decision
             </h2>
 
