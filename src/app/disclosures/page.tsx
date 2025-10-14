@@ -193,11 +193,10 @@ export default function DisclosuresPage() {
                       Contact Us:
                     </h3>
                     <p className="text-base text-gray-600 leading-relaxed">
-                      If you have questions about these disclosures or our privacy practices, please contact us at{' '}
-                      <a href="mailto:privacy@avsbee.com" className="text-blue-600 hover:text-blue-800 underline">
-                        privacy@avsbee.com
-                      </a>
-                      .
+                      If you have questions about these disclosures or our privacy practices, please visit our{' '}
+                      <Link href="/contact" className="text-blue-600 hover:text-blue-800 underline">
+                        Contact page
+                      </Link>.
                     </p>
                   </div>
                 </div>

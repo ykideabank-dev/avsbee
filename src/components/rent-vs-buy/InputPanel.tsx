@@ -16,6 +16,43 @@ export default function InputPanel({
   onPresetSelect,
 }: InputPanelProps) {
   const [advancedOpen, setAdvancedOpen] = useState(false);
+  // Track temporary empty state for fields being edited
+  const [editingFields, setEditingFields] = useState<Record<string, string>>({});
+
+  // Helper function to handle input focus - selects all if value is 0
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target.value === '0' || parseFloat(e.target.value) === 0) {
+      e.target.select();
+    }
+  };
+
+  // Helper function to handle blur - set to 0 if empty
+  const handleBlur = (field: keyof ScenarioInputs) => {
+    return (e: React.FocusEvent<HTMLInputElement>) => {
+      const value = e.target.value.trim();
+      if (value === '' || value === '0') {
+        onInputChange(field, 0);
+        setEditingFields(prev => {
+          const next = { ...prev };
+          delete next[field];
+          return next;
+        });
+      }
+    };
+  };
+
+  // Get display value for a field (either the editing value or the actual value)
+  const getDisplayValue = (field: keyof ScenarioInputs, multiplier: number = 1, decimals?: number): string | number => {
+    if (editingFields[field] !== undefined) {
+      return editingFields[field];
+    }
+    const value = inputs[field] as number;
+    if (value === 0) {
+      return '';
+    }
+    const displayValue = value * multiplier;
+    return decimals !== undefined ? Math.round(displayValue * Math.pow(10, decimals)) / Math.pow(10, decimals) : displayValue;
+  };
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
@@ -63,10 +100,16 @@ export default function InputPanel({
             <input
               type="number"
               id="homePrice"
-              value={inputs.homePrice}
-              onChange={(e) =>
-                onInputChange('homePrice', parseFloat(e.target.value) || 0)
-              }
+              value={getDisplayValue('homePrice')}
+              onChange={(e) => {
+                const value = e.target.value;
+                setEditingFields(prev => ({ ...prev, homePrice: value }));
+                if (value !== '') {
+                  onInputChange('homePrice', parseFloat(value) || 0);
+                }
+              }}
+              onFocus={handleFocus}
+              onBlur={handleBlur('homePrice')}
               className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="500000"
             />
@@ -85,15 +128,16 @@ export default function InputPanel({
             <input
               type="number"
               id="downPaymentPct"
-              value={inputs.downPaymentPct === 0 ? '' : inputs.downPaymentPct * 100}
+              value={getDisplayValue('downPaymentPct', 100)}
               onChange={(e) => {
                 const value = e.target.value;
-                if (value === '') {
-                  onInputChange('downPaymentPct', 0);
-                } else {
+                setEditingFields(prev => ({ ...prev, downPaymentPct: value }));
+                if (value !== '') {
                   onInputChange('downPaymentPct', parseFloat(value) / 100);
                 }
               }}
+              onFocus={handleFocus}
+              onBlur={handleBlur('downPaymentPct')}
               min="0"
               max="100"
               step="1"
@@ -116,15 +160,16 @@ export default function InputPanel({
             <input
               type="number"
               id="mortgageRate"
-              value={inputs.mortgageRate === 0 ? '' : Math.round(inputs.mortgageRate * 100 * 1000) / 1000}
+              value={getDisplayValue('mortgageRate', 100, 3)}
               onChange={(e) => {
                 const value = e.target.value;
-                if (value === '') {
-                  onInputChange('mortgageRate', 0);
-                } else {
+                setEditingFields(prev => ({ ...prev, mortgageRate: value }));
+                if (value !== '') {
                   onInputChange('mortgageRate', parseFloat(value) / 100);
                 }
               }}
+              onFocus={handleFocus}
+              onBlur={handleBlur('mortgageRate')}
               min="0"
               max="20"
               step="0.001"
@@ -211,10 +256,16 @@ export default function InputPanel({
             <input
               type="number"
               id="currentRent"
-              value={inputs.currentRent}
-              onChange={(e) =>
-                onInputChange('currentRent', parseFloat(e.target.value) || 0)
-              }
+              value={getDisplayValue('currentRent')}
+              onChange={(e) => {
+                const value = e.target.value;
+                setEditingFields(prev => ({ ...prev, currentRent: value }));
+                if (value !== '') {
+                  onInputChange('currentRent', parseFloat(value) || 0);
+                }
+              }}
+              onFocus={handleFocus}
+              onBlur={handleBlur('currentRent')}
               className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="2500"
             />
@@ -262,12 +313,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="propertyTaxRate"
-                      value={Math.round(inputs.propertyTaxRate * 100 * 100) / 100}
+                      value={getDisplayValue('propertyTaxRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('propertyTaxRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, propertyTaxRate: value }));
+                        if (value !== '') {
+                          onInputChange('propertyTaxRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('propertyTaxRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -290,12 +345,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="assessedValueGrowthRate"
-                      value={Math.round(inputs.assessedValueGrowthRate * 100 * 100) / 100}
+                      value={getDisplayValue('assessedValueGrowthRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('assessedValueGrowthRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, assessedValueGrowthRate: value }));
+                        if (value !== '') {
+                          onInputChange('assessedValueGrowthRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('assessedValueGrowthRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -319,10 +378,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="hoaMonthly"
-                      value={inputs.hoaMonthly}
-                      onChange={(e) =>
-                        onInputChange('hoaMonthly', parseFloat(e.target.value) || 0)
-                      }
+                      value={getDisplayValue('hoaMonthly')}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, hoaMonthly: value }));
+                        if (value !== '') {
+                          onInputChange('hoaMonthly', parseFloat(value) || 0);
+                        }
+                      }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('hoaMonthly')}
                       className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
                   </div>
@@ -343,12 +408,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="maintenanceInsuranceRate"
-                      value={Math.round(inputs.maintenanceInsuranceRate * 100 * 100) / 100}
+                      value={getDisplayValue('maintenanceInsuranceRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('maintenanceInsuranceRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, maintenanceInsuranceRate: value }));
+                        if (value !== '') {
+                          onInputChange('maintenanceInsuranceRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('maintenanceInsuranceRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -379,12 +448,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="closingCostsPct"
-                      value={Math.round(inputs.closingCostsPct * 100 * 100) / 100}
+                      value={getDisplayValue('closingCostsPct', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('closingCostsPct', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, closingCostsPct: value }));
+                        if (value !== '') {
+                          onInputChange('closingCostsPct', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('closingCostsPct')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -407,12 +480,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="sellingCostsPct"
-                      value={Math.round(inputs.sellingCostsPct * 100 * 100) / 100}
+                      value={getDisplayValue('sellingCostsPct', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('sellingCostsPct', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, sellingCostsPct: value }));
+                        if (value !== '') {
+                          onInputChange('sellingCostsPct', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('sellingCostsPct')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -443,12 +520,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="homeAppreciationRate"
-                      value={Math.round(inputs.homeAppreciationRate * 100 * 100) / 100}
+                      value={getDisplayValue('homeAppreciationRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('homeAppreciationRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, homeAppreciationRate: value }));
+                        if (value !== '') {
+                          onInputChange('homeAppreciationRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('homeAppreciationRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -471,12 +552,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="rentInflationRate"
-                      value={Math.round(inputs.rentInflationRate * 100 * 100) / 100}
+                      value={getDisplayValue('rentInflationRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('rentInflationRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, rentInflationRate: value }));
+                        if (value !== '') {
+                          onInputChange('rentInflationRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('rentInflationRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -499,12 +584,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="investmentReturnRate"
-                      value={Math.round(inputs.investmentReturnRate * 100 * 100) / 100}
+                      value={getDisplayValue('investmentReturnRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('investmentReturnRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, investmentReturnRate: value }));
+                        if (value !== '') {
+                          onInputChange('investmentReturnRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('investmentReturnRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
@@ -535,12 +624,16 @@ export default function InputPanel({
                     <input
                       type="number"
                       id="marginalTaxRate"
-                      value={Math.round(inputs.marginalTaxRate * 100 * 100) / 100}
+                      value={getDisplayValue('marginalTaxRate', 100, 2)}
                       onChange={(e) => {
-                        const percentValue = parseFloat(e.target.value);
-                        const decimalValue = percentValue / 100;
-                        onInputChange('marginalTaxRate', decimalValue);
+                        const value = e.target.value;
+                        setEditingFields(prev => ({ ...prev, marginalTaxRate: value }));
+                        if (value !== '') {
+                          onInputChange('marginalTaxRate', parseFloat(value) / 100);
+                        }
                       }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur('marginalTaxRate')}
                       step="0.01"
                       className="w-full pr-8 pl-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
