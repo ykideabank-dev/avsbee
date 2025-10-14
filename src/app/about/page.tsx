@@ -22,7 +22,7 @@ export default function AboutPage() {
               About AvsBee
             </h1>
             <p className="text-lg text-gray-600">
-              Making decisions shouldn't be so hard
+              Making decisions shouldn&apos;t be so hard
             </p>
           </div>
 
@@ -36,10 +36,10 @@ export default function AboutPage() {
                     Life is full of decisions. Some are small—where to eat dinner. Others are big—whether to buy a home or keep renting, which job offer to accept, or where to live.
                   </p>
                   <p>
-                    In our busy world, we're constantly weighing options, comparing alternatives, and trying to make the smartest choice with limited time and incomplete information. You wish there was a tool that could help you see the full picture—something that takes the complexity out of comparison and gives you clarity when you need it most.
+                    In our busy world, we&apos;re constantly weighing options, comparing alternatives, and trying to make the smartest choice with limited time and incomplete information. You wish there was a tool that could help you see the full picture—something that takes the complexity out of comparison and gives you clarity when you need it most.
                   </p>
                   <p className="font-semibold text-gray-900">
-                    That's why AvsBee exists.
+                    That&apos;s why AvsBee exists.
                   </p>
                 </div>
               </section>
@@ -51,10 +51,10 @@ export default function AboutPage() {
                 </h2>
                 <div className="text-base text-gray-600 leading-relaxed space-y-4">
                   <p>
-                    I'm Kim, and like you, I've faced countless decisions where I wished I had a better way to compare my options. Whether it was calculating the real cost of buying versus renting, comparing job offers with different benefits packages, or weighing lifestyle trade-offs, I found myself building spreadsheets over and over again.
+                    I&apos;m Kim, and like you, I&apos;ve faced countless decisions where I wished I had a better way to compare my options. Whether it was calculating the real cost of buying versus renting, comparing job offers with different benefits packages, or weighing lifestyle trade-offs, I found myself building spreadsheets over and over again.
                   </p>
                   <p>
-                    I realized I wasn't alone. We all share this experience—the desire to make informed decisions without spending hours doing math or second-guessing ourselves.
+                    I realized I wasn&apos;t alone. We all share this experience—the desire to make informed decisions without spending hours doing math or second-guessing ourselves.
                   </p>
                   <p>
                     So I built AvsBee: a collection of practical comparison tools designed for real people making real decisions. No jargon. No complexity. Just clear, honest insights to help you choose confidently.
@@ -121,7 +121,7 @@ export default function AboutPage() {
                     Right now, AvsBee helps you compare renting versus buying a home. But this is just the beginning.
                   </p>
                   <p className="font-semibold text-gray-900">
-                    We're working on tools to help you compare:
+                    We&apos;re working on tools to help you compare:
                   </p>
                   <ul className="list-disc list-inside space-y-3 ml-4">
                     <li>Job offers (salary, benefits, commute, growth potential)</li>
@@ -135,7 +135,7 @@ export default function AboutPage() {
                     <Link href="/contact" className="text-blue-600 hover:text-blue-800 underline">
                       Contact us
                     </Link>
-                    {' '}— we'd love to hear from you.
+                    {' '}— we&apos;d love to hear from you.
                   </p>
                 </div>
               </section>

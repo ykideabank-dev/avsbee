@@ -64,7 +64,7 @@ export default function TermsPage() {
                     1. Acceptance of Terms
                   </h2>
                   <p className="text-base text-gray-600 leading-relaxed">
-                    By accessing or using AvsBee's website and calculators, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use and our Privacy Policy. If you do not agree, please do not use our services.
+                    By accessing or using AvsBee&apos;s website and calculators, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use and our Privacy Policy. If you do not agree, please do not use our services.
                   </p>
                 </section>
 
@@ -74,7 +74,7 @@ export default function TermsPage() {
                     2. Description of Service
                   </h2>
                   <p className="text-base text-gray-600 leading-relaxed">
-                    AvsBee provides free online comparison calculators and decision-making tools (the "Service") to help users analyze and compare various financial and lifestyle options. Our tools are designed for informational and educational purposes only.
+                    AvsBee provides free online comparison calculators and decision-making tools (the &quot;Service&quot;) to help users analyze and compare various financial and lifestyle options. Our tools are designed for informational and educational purposes only.
                   </p>
                 </section>
 

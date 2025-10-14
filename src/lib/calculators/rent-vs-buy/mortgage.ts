@@ -66,7 +66,6 @@ export function calculateRemainingBalance(
   }
 
   const monthlyRate = annualRate / 12;
-  const monthlyPayment = calculateMonthlyPayment(loanAmount, annualRate, termYears);
 
   // Remaining balance formula: B = P[(1+r)^n - (1+r)^p] / [(1+r)^n - 1]
   // where p = payments made, n = total payments

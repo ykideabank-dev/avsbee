@@ -15,7 +15,6 @@ export default function InputPanel({
   onInputChange,
   onPresetSelect,
 }: InputPanelProps) {
-  const [showAdvanced, setShowAdvanced] = useState(false);
   const [advancedOpen, setAdvancedOpen] = useState(false);
 
   return (
@@ -146,7 +145,7 @@ export default function InputPanel({
               className="text-blue-600 hover:text-blue-800 hover:underline"
               data-affiliate="rate-check"
             >
-              Check today's rates →
+              Check today&apos;s rates →
             </a>
           </p>
         </div>

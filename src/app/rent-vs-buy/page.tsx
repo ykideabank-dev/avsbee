@@ -8,16 +8,7 @@ import InputPanel from '@/components/rent-vs-buy/InputPanel';
 import ResultsDisplay from '@/components/rent-vs-buy/ResultsDisplay';
 import { ScenarioInputs } from '@/lib/calculators/rent-vs-buy/types';
 import { calculateScenario } from '@/lib/calculators/rent-vs-buy/calculator';
-import { regionalPresets, getPresetById } from '@/lib/calculators/rent-vs-buy/presets';
-
-// TODO: Replace placeholder links with real affiliate links when approved
-const AFFILIATE_LINKS = {
-  mortgageRates: '#',     // TODO: Replace with LendingTree or similar
-  realEstate: '#',        // TODO: Replace with Redfin/Zillow link
-  investing: '#',         // TODO: Replace with Betterment/Vanguard link
-  rateCheck: '#',         // TODO: Replace with rate comparison link
-  findRentals: '#',       // TODO: Replace with rental search link
-};
+import { getPresetById } from '@/lib/calculators/rent-vs-buy/presets';
 
 export default function RentVsBuyPage() {
   // Get Orange County preset as default
@@ -96,7 +87,7 @@ export default function RentVsBuyPage() {
               Rent vs Buy Calculator
             </h1>
             <p className="text-xl text-indigo-100 max-w-3xl">
-              Make an informed decision about one of life's biggest financial choices.
+              Make an informed decision about one of life&apos;s biggest financial choices.
               Compare the true costs of renting versus buying a home.
             </p>
           </div>
@@ -237,7 +228,7 @@ export default function RentVsBuyPage() {
               {!isBuyingWinner && !isRentingWinner && (
                 <>
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                    🤔 It's a Close Call - Explore Your Options
+                    🤔 It&apos;s a Close Call - Explore Your Options
                   </h2>
                   <p className="text-gray-700 mb-6">
                     The financial outcome is similar for both scenarios. Consider your lifestyle preferences and goals.

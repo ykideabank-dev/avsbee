@@ -18,7 +18,6 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
 
   const isBuyWinner = results.winner === 'buy';
   const isRentWinner = results.winner === 'rent';
-  const isTie = results.winner === 'tie';
 
   // Calculate derived values for detailed breakdowns
   const downPayment = inputs.homePrice * inputs.downPaymentPct;
@@ -195,7 +194,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
 
               {/* Section 3: Final Position */}
               <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
-                <h4 className="font-semibold text-gray-900 mb-2">Home's Value After {inputs.timeHorizonYears} Yrs</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Home&apos;s Value After {inputs.timeHorizonYears} Yrs</h4>
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Home market value:</span>
@@ -235,7 +234,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
                     </span>
                   </div>
                   <div className="mt-3 p-2 bg-gray-50 rounded text-xs text-gray-600 italic">
-                    Note: Down payment and principal payments are not subtracted because they're already part of your equity
+                    Note: Down payment and principal payments are not subtracted because they&apos;re already part of your equity
                   </div>
                 </div>
               </div>
@@ -307,7 +306,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
             <div className="mt-4 pt-4 border-t border-gray-200 bg-gray-50 -mx-6 -mb-6 px-6 pb-6 rounded-b-lg">
               {/* Helper Note */}
               <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-900">
-                <strong>Net Result</strong> = What you get back minus pure expenses (rent paid - money that's gone forever)
+                <strong>Net Result</strong> = What you get back minus pure expenses (rent paid - money that&apos;s gone forever)
               </div>
 
               {/* Section 1: What You Invested */}
@@ -348,7 +347,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
 
               {/* Section 3: Investment Growth */}
               <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
-                <h4 className="font-semibold text-gray-900 mb-2">Portfolio's Value After {inputs.timeHorizonYears} Yrs</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Portfolio&apos;s Value After {inputs.timeHorizonYears} Yrs</h4>
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Initial investment:</span>
@@ -388,7 +387,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
                     </span>
                   </div>
                   <div className="mt-3 p-2 bg-gray-50 rounded text-xs text-gray-600 italic">
-                    Note: Initial investment and monthly contributions are not subtracted because they're already part of your portfolio
+                    Note: Initial investment and monthly contributions are not subtracted because they&apos;re already part of your portfolio
                   </div>
                 </div>
               </div>
@@ -414,7 +413,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
 
           {isNetResultTie && (
             <p className="text-base text-gray-900">
-              It's essentially a tie (within $1,000)
+              It&apos;s essentially a tie (within $1,000)
             </p>
           )}
         </div>

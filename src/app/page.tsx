@@ -18,7 +18,7 @@ export default function Home() {
               Make Smarter Money Decisions
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Free calculators for life's biggest financial choices
+              Free calculators for life&apos;s biggest financial choices
             </p>
 
             {/* Feature Badges */}

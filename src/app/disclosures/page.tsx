@@ -91,7 +91,7 @@ export default function DisclosuresPage() {
                       FTC Compliance:
                     </h3>
                     <p className="text-base text-gray-600 leading-relaxed">
-                      This disclosure is made in accordance with the Federal Trade Commission's 16 CFR Part 255: "Guides Concerning the Use of Endorsements and Testimonials in Advertising."
+                      This disclosure is made in accordance with the Federal Trade Commission&apos;s 16 CFR Part 255: &quot;Guides Concerning the Use of Endorsements and Testimonials in Advertising.&quot;
                     </p>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export default function DisclosuresPage() {
                       Information We Collect:
                     </h3>
                     <p className="text-base text-gray-600 leading-relaxed mb-4">
-                      AvsBee's calculators run entirely in your web browser. We do not collect, store, or transmit your personal financial information (such as home prices, income, or other inputs you enter into our calculators) to our servers.
+                      AvsBee&apos;s calculators run entirely in your web browser. We do not collect, store, or transmit your personal financial information (such as home prices, income, or other inputs you enter into our calculators) to our servers.
                     </p>
                     <p className="text-base text-gray-600 leading-relaxed mb-4">We may collect:</p>
                     <ul className="list-disc list-inside space-y-3 text-base text-gray-600 ml-4">
@@ -184,7 +184,7 @@ export default function DisclosuresPage() {
                       Changes to This Policy:
                     </h3>
                     <p className="text-base text-gray-600 leading-relaxed">
-                      We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last Updated" date.
+                      We may update this privacy policy from time to time. Changes will be posted on this page with an updated &quot;Last Updated&quot; date.
                     </p>
                   </div>
 
