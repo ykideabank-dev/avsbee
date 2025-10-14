@@ -134,6 +134,21 @@ export default function InputPanel({
             />
             <span className="absolute right-3 top-2 text-gray-500">%</span>
           </div>
+          {/* TODO: Add mortgage rate comparison affiliate link */}
+          <p className="mt-2 text-sm text-gray-500">
+            💡{' '}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log('Affiliate link placeholder - rate check');
+              }}
+              className="text-blue-600 hover:text-blue-800 hover:underline"
+              data-affiliate="rate-check"
+            >
+              Check today's rates →
+            </a>
+          </p>
         </div>
 
         {/* Loan Term */}
@@ -270,7 +285,7 @@ export default function InputPanel({
                     htmlFor="assessedValueGrowthRate"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Assessed Value Growth Rate (Annual %)
+                    Assessed Value Growth (Annual %)
                   </label>
                   <div className="relative">
                     <input
@@ -323,7 +338,7 @@ export default function InputPanel({
                     htmlFor="maintenanceInsuranceRate"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Maintenance & Insurance Rate (Annual %)
+                    Maintenance & Insurance (Annual %)
                   </label>
                   <div className="relative">
                     <input

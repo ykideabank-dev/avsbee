@@ -134,9 +134,9 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 1: Initial Investment */}
-              <div className="mb-4 pb-4 border-b-2 border-gray-300">
-                <h4 className="font-semibold text-gray-900 mb-2">Section 1: What You Invested</h4>
-                <div className="space-y-1 text-sm ml-4">
+              <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
+                <h4 className="font-semibold text-gray-900 mb-2">Total Invested</h4>
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Down payment:</span>
                     <span className="font-medium text-gray-900">{formatCurrency(downPayment)}</span>
@@ -157,11 +157,11 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 2: Pure Expenses (Gone Forever) */}
-              <div className="mb-4 pb-4 border-b-2 border-gray-300">
+              <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
                 <h4 className="font-semibold text-gray-900 mb-2">
-                  Section 2: Pure Expenses Over {inputs.timeHorizonYears} Years
+                  Total Costs Over Time
                 </h4>
-                <div className="space-y-1 text-sm ml-4">
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Total interest paid:</span>
                     <span className="font-medium text-red-600">{formatCurrency(results.totalInterestPaid)}</span>
@@ -194,9 +194,9 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 3: Final Position */}
-              <div className="mb-4 pb-4 border-b-2 border-gray-300">
-                <h4 className="font-semibold text-gray-900 mb-2">Section 3: Final Position</h4>
-                <div className="space-y-1 text-sm ml-4">
+              <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
+                <h4 className="font-semibold text-gray-900 mb-2">Home's Value After {inputs.timeHorizonYears} Yrs</h4>
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Home market value:</span>
                     <span className="font-medium text-gray-900">{formatCurrency(results.homeFutureValue)}</span>
@@ -217,9 +217,9 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 4: Net Result Calculation */}
-              <div className="bg-white rounded p-4 border-2 border-indigo-200">
-                <h4 className="font-semibold text-gray-900 mb-3">Section 4: Net Result Calculation</h4>
-                <div className="space-y-1 text-sm ml-4">
+              <div className="bg-white rounded p-5 border-2 border-indigo-200">
+                <h4 className="font-semibold text-gray-900 mb-3">Net Result Calculation</h4>
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Final equity:</span>
                     <span className="font-medium text-gray-900">{formatCurrency(results.netHomeEquity)}</span>
@@ -229,7 +229,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
                     <span className="font-medium text-red-600">({formatCurrency(pureExpensesBuying)})</span>
                   </div>
                   <div className="flex justify-between pt-2 mt-2 border-t-2 border-indigo-400">
-                    <span className="font-bold text-gray-900">= Net Result:</span>
+                    <span className="font-bold text-gray-900">= Net Wealth (After {inputs.timeHorizonYears} Yrs):</span>
                     <span className={`font-bold text-lg ${netResultBuying >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {netResultBuying >= 0 ? '+' : ''}{formatCurrency(netResultBuying)}
                     </span>
@@ -311,9 +311,9 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 1: What You Invested */}
-              <div className="mb-4 pb-4 border-b-2 border-gray-300">
-                <h4 className="font-semibold text-gray-900 mb-2">Section 1: What You Invested</h4>
-                <div className="space-y-1 text-sm ml-4">
+              <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
+                <h4 className="font-semibold text-gray-900 mb-2">Total Invested</h4>
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Initial investment:</span>
                     <span className="font-medium text-gray-900">{formatCurrency(results.totalInvested)}</span>
@@ -330,11 +330,11 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 2: Pure Expenses (Gone Forever) */}
-              <div className="mb-4 pb-4 border-b-2 border-gray-300">
+              <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
                 <h4 className="font-semibold text-gray-900 mb-2">
-                  Section 2: Pure Expenses Over {inputs.timeHorizonYears} Years
+                  Total Costs Over Time
                 </h4>
-                <div className="space-y-1 text-sm ml-4">
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Total rent paid:</span>
                     <span className="font-medium text-red-600">{formatCurrency(results.totalRentPaid)}</span>
@@ -347,9 +347,9 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 3: Investment Growth */}
-              <div className="mb-4 pb-4 border-b-2 border-gray-300">
-                <h4 className="font-semibold text-gray-900 mb-2">Section 3: Investment Growth</h4>
-                <div className="space-y-1 text-sm ml-4">
+              <div className="mb-4 pb-4 border-b-2 border-gray-300 bg-gray-50 p-4 rounded">
+                <h4 className="font-semibold text-gray-900 mb-2">Portfolio's Value After {inputs.timeHorizonYears} Yrs</h4>
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Initial investment:</span>
                     <span className="font-medium text-gray-900">{formatCurrency(results.totalInvested)}</span>
@@ -370,9 +370,9 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               </div>
 
               {/* Section 4: Net Result Calculation */}
-              <div className="bg-white rounded p-4 border-2 border-indigo-200">
-                <h4 className="font-semibold text-gray-900 mb-3">Section 4: Net Result Calculation</h4>
-                <div className="space-y-1 text-sm ml-4">
+              <div className="bg-white rounded p-5 border-2 border-indigo-200">
+                <h4 className="font-semibold text-gray-900 mb-3">Net Result Calculation</h4>
+                <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Final portfolio:</span>
                     <span className="font-medium text-gray-900">{formatCurrency(results.investmentPortfolioValue)}</span>
@@ -382,7 +382,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
                     <span className="font-medium text-red-600">({formatCurrency(results.totalRentPaid)})</span>
                   </div>
                   <div className="flex justify-between pt-2 mt-2 border-t-2 border-indigo-400">
-                    <span className="font-bold text-gray-900">= Net Result:</span>
+                    <span className="font-bold text-gray-900">= Net Wealth (After {inputs.timeHorizonYears} Yrs):</span>
                     <span className={`font-bold text-lg ${netResultRenting >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {netResultRenting >= 0 ? '+' : ''}{formatCurrency(netResultRenting)}
                     </span>
@@ -398,49 +398,31 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
       </div>
 
       {/* Summary Section */}
-      <div className="bg-indigo-50 rounded-lg p-6">
-        <div className="text-center mb-4">
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <div className="text-center">
           {isNetResultBuyWinner && (
-            <>
-              <p className="text-2xl font-bold text-indigo-900 mb-2">
-                🏠 Buying has a better net result by {formatCurrency(Math.abs(netResultDifference))}
-              </p>
-              <p className="text-gray-700">
-                After {inputs.timeHorizonYears} years
-              </p>
-            </>
+            <p className="text-base text-gray-900">
+              <strong>Buying</strong> has a better net result by {formatCurrency(Math.abs(netResultDifference))}
+            </p>
           )}
 
           {isNetResultRentWinner && (
-            <>
-              <p className="text-2xl font-bold text-indigo-900 mb-2">
-                🏢 Renting + Investing has a better net result by {formatCurrency(Math.abs(netResultDifference))}
-              </p>
-              <p className="text-gray-700">
-                After {inputs.timeHorizonYears} years
-              </p>
-            </>
+            <p className="text-base text-gray-900">
+              <strong>Renting + Investing</strong> has a better net result by {formatCurrency(Math.abs(netResultDifference))}
+            </p>
           )}
 
           {isNetResultTie && (
-            <>
-              <p className="text-2xl font-bold text-indigo-900 mb-2">
-                📊 It's essentially a tie (within $1,000)
-              </p>
-              <p className="text-gray-700">
-                After {inputs.timeHorizonYears} years
-              </p>
-            </>
+            <p className="text-base text-gray-900">
+              It's essentially a tie (within $1,000)
+            </p>
           )}
         </div>
 
         {/* Explanation */}
-        <div className="mt-4 pt-4 border-t border-indigo-200">
-          <p className="text-sm text-gray-700 italic">
+        <div className="mt-3 pt-3 border-t border-gray-200">
+          <p className="text-xs text-gray-500 text-center">
             <strong>Net Result</strong> = What you get back minus what you put in over {inputs.timeHorizonYears} years
-          </p>
-          <p className="text-xs text-gray-600 mt-2">
-            This shows the true return/cost of each scenario, not just the final asset values
           </p>
         </div>
       </div>

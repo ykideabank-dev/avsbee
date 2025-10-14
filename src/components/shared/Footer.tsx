@@ -13,10 +13,10 @@ export default function Footer() {
             About
           </Link>
           <Link
-            href="/privacy"
+            href="/disclosures"
             className="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
           >
-            Privacy
+            Disclosures & Privacy
           </Link>
           <Link
             href="/terms"
