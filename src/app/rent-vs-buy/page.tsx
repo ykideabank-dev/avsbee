@@ -172,14 +172,15 @@ export default function RentVsBuyPage() {
                     Based on your analysis, <strong>buying</strong> appears to be the better financial choice for you.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                    {/* TODO: Replace with real affiliate links */}
-                    <button
-                      onClick={() => console.log('Affiliate link placeholder - mortgage rates')}
+                    <a
+                      href="https://track.flexlinkspro.com/g.ashx?foid=24.242107.6666419&trid=1524557.242107&foc=16&fot=9999&fos=6"
+                      target="_blank"
+                      rel="nofollow sponsored"
                       data-affiliate="mortgage-rates"
-                      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-md"
+                      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-md text-center"
                     >
                       Compare Mortgage Rates
-                    </button>
+                    </a>
                     <button
                       onClick={() => console.log('Affiliate link placeholder - real estate search')}
                       data-affiliate="real-estate-search"
@@ -234,14 +235,15 @@ export default function RentVsBuyPage() {
                     The financial outcome is similar for both scenarios. Consider your lifestyle preferences and goals.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                    {/* TODO: Replace with real affiliate links */}
-                    <button
-                      onClick={() => console.log('Affiliate link placeholder - mortgage rates')}
+                    <a
+                      href="https://track.flexlinkspro.com/g.ashx?foid=24.242107.6666419&trid=1524557.242107&foc=16&fot=9999&fos=6"
+                      target="_blank"
+                      rel="nofollow sponsored"
                       data-affiliate="mortgage-rates"
-                      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-md"
+                      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-md text-center"
                     >
                       Compare Mortgage Rates
-                    </button>
+                    </a>
                     <button
                       onClick={() => console.log('Affiliate link placeholder - investing platform')}
                       data-affiliate="investing-platform"
@@ -275,14 +277,15 @@ export default function RentVsBuyPage() {
                 <p className="text-gray-600 text-sm mb-4 text-center">
                   See current rates from top lenders and get pre-qualified in minutes.
                 </p>
-                {/* TODO: Replace with affiliate links when approved */}
-                <button
-                  onClick={() => console.log('Affiliate link placeholder - mortgage comparison')}
+                <a
+                  href="https://track.flexlinkspro.com/g.ashx?foid=24.242107.6666419&trid=1524557.242107&foc=16&fot=9999&fos=6"
+                  target="_blank"
+                  rel="nofollow sponsored"
                   data-affiliate="mortgage-comparison"
-                  className="w-full text-blue-600 hover:text-blue-800 font-medium transition-colors text-center"
+                  className="block w-full text-blue-600 hover:text-blue-800 font-medium transition-colors text-center"
                 >
                   View Rates →
-                </button>
+                </a>
               </div>
 
               {/* Card 2: Real Estate Search */}
