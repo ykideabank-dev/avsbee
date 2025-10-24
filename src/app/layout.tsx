@@ -13,11 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AvsBee - Smart Financial Comparison Tools",
-  description: "Free calculators for life's financial choices. Compare rent vs buy, job offers, and more to make informed decisions.",
+  title: "AvsBee - Free Financial Calculators | Rent vs Buy, Car Lease, Solar & More",
+  description: "Make smarter financial decisions with free calculators. Compare rent vs buy, car leasing, college costs, solar savings, and investment options. Instant results, no signup required.",
+  keywords: "financial calculator, rent vs buy calculator, car lease calculator, college cost calculator, solar calculator, investment calculator, financial decisions",
   icons: {
     icon: '/logo.svg',
     apple: '/logo.svg',
+  },
+  alternates: {
+    canonical: "https://avsbee.com",
+  },
+  openGraph: {
+    title: "AvsBee - Free Financial Calculators",
+    description: "Make smarter financial decisions with free comparison calculators.",
+    type: "website",
+    url: "https://avsbee.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AvsBee - Free Financial Calculators",
+    description: "Compare rent vs buy, car leasing, and more with free calculators",
   },
   verification: {
     other: {
