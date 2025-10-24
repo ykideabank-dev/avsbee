@@ -364,7 +364,7 @@ export default function RentVsBuyPage() {
               </h2>
 
               <p className="text-base text-gray-700 mb-6" style={{ lineHeight: '1.7' }}>
-                The decision to rent or buy a home is one of the most significant financial choices you'll make. Our free rent vs buy calculator helps you compare the true costs of renting versus buying, including factors like mortgage payments, property taxes, maintenance costs, and investment returns.
+                The decision to rent or buy a home is one of the most significant financial choices you&apos;ll make. Our free rent vs buy calculator helps you compare the true costs of renting versus buying, including factors like mortgage payments, property taxes, maintenance costs, and investment returns.
               </p>
 
               <h3 className="text-2xl font-semibold text-gray-900 mb-4 mt-10">
@@ -391,7 +391,7 @@ export default function RentVsBuyPage() {
                 <li className="mb-3"><strong className="text-gray-900">Flexibility needed:</strong> Your career or life situation may require relocation</li>
                 <li className="mb-3"><strong className="text-gray-900">High housing costs:</strong> The local market has inflated home prices or high property taxes</li>
                 <li className="mb-3"><strong className="text-gray-900">Investment opportunities:</strong> You can earn better returns investing the difference in the stock market</li>
-                <li className="mb-3"><strong className="text-gray-900">Credit building:</strong> You're working on improving your credit score or saving for a larger down payment</li>
+                <li className="mb-3"><strong className="text-gray-900">Credit building:</strong> You&apos;re working on improving your credit score or saving for a larger down payment</li>
                 <li className="mb-3"><strong className="text-gray-900">No maintenance burden:</strong> You prefer your landlord handle repairs and upkeep</li>
               </ul>
 
@@ -399,7 +399,7 @@ export default function RentVsBuyPage() {
                 Next Steps After Using the Calculator
               </h3>
               <p className="text-base text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
-                Once you've compared renting vs buying, consider these next steps:
+                Once you&apos;ve compared renting vs buying, consider these next steps:
               </p>
               <ul className="list-disc pl-6 mb-8 text-gray-700" style={{ lineHeight: '1.7' }}>
                 <li className="mb-3"><strong className="text-gray-900">Check your credit score:</strong> A higher score means better mortgage rates and lower monthly payments</li>
