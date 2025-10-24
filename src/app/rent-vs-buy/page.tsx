@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, Building2, Home, TrendingUp } from 'lucide-react';
+import { ChevronDown, Building2, Home, TrendingUp, CreditCard } from 'lucide-react';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import InputPanel from '@/components/rent-vs-buy/InputPanel';
@@ -101,10 +101,10 @@ export default function RentVsBuyPage() {
                 onClick={() => setHowItWorksOpen(!howItWorksOpen)}
                 className="flex items-center justify-between w-full text-left hover:bg-blue-100 -mx-2 px-2 py-2 rounded transition-colors cursor-pointer"
               >
-                <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
+                <h2 className="text-base font-semibold text-gray-900 flex items-center gap-2">
                   <span>ℹ️</span>
                   <span>How This Calculator Works</span>
-                </h3>
+                </h2>
                 <ChevronDown
                   className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
                     howItWorksOpen ? 'rotate-180' : ''
@@ -166,7 +166,7 @@ export default function RentVsBuyPage() {
               {isBuyingWinner && (
                 <>
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                    🎯 Ready to Start Your Home Buying Journey?
+                    Ready to Start Your Home Buying Journey?
                   </h2>
                   <p className="text-gray-700 mb-6">
                     Based on your analysis, <strong>buying</strong> appears to be the better financial choice for you.
@@ -198,7 +198,7 @@ export default function RentVsBuyPage() {
               {isRentingWinner && (
                 <>
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                    📈 Ready to Maximize Your Investment Strategy?
+                    Maximize Your Investment Strategy While Renting
                   </h2>
                   <p className="text-gray-700 mb-6">
                     Based on your analysis, <strong>renting and investing</strong> appears to be the better financial choice for you.
@@ -229,7 +229,7 @@ export default function RentVsBuyPage() {
               {!isBuyingWinner && !isRentingWinner && (
                 <>
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                    🤔 It&apos;s a Close Call - Explore Your Options
+                    Renting vs Buying: Explore Your Options
                   </h2>
                   <p className="text-gray-700 mb-6">
                     The financial outcome is similar for both scenarios. Consider your lifestyle preferences and goals.
@@ -265,8 +265,29 @@ export default function RentVsBuyPage() {
               Helpful Resources to Get Started
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Card 1: Mortgage Options */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Card 1: Check Credit Score */}
+              <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-blue-300 transition-all">
+                <div className="flex justify-center mb-4">
+                  <CreditCard className="w-12 h-12 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 mb-2 text-center">
+                  Check Your Credit Score
+                </h3>
+                <p className="text-gray-600 text-sm mb-4 text-center">
+                  See your credit score and get tips to improve it before applying for a mortgage. A higher score means better rates.
+                </p>
+                {/* TODO: Replace with affiliate links when approved */}
+                <button
+                  onClick={() => console.log('Affiliate link placeholder - credit score check')}
+                  data-affiliate="credit-score"
+                  className="w-full text-blue-600 hover:text-blue-800 font-medium transition-colors text-center"
+                >
+                  Check Score →
+                </button>
+              </div>
+
+              {/* Card 2: Mortgage Options */}
               <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-blue-300 transition-all">
                 <div className="flex justify-center mb-4">
                   <Building2 className="w-12 h-12 text-blue-600" />
@@ -288,7 +309,7 @@ export default function RentVsBuyPage() {
                 </a>
               </div>
 
-              {/* Card 2: Real Estate Search */}
+              {/* Card 3: Real Estate Search */}
               <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-blue-300 transition-all">
                 <div className="flex justify-center mb-4">
                   <Home className="w-12 h-12 text-green-600" />
@@ -309,7 +330,7 @@ export default function RentVsBuyPage() {
                 </button>
               </div>
 
-              {/* Card 3: Investment Platforms */}
+              {/* Card 4: Investment Platforms */}
               <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-blue-300 transition-all">
                 <div className="flex justify-center mb-4">
                   <TrendingUp className="w-12 h-12 text-indigo-600" />
@@ -333,13 +354,75 @@ export default function RentVsBuyPage() {
           </div>
         </section>
 
+        {/* Educational SEO Content Section */}
+        <section className="py-6 bg-gray-50">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '90rem' }}>
+            <div className="bg-white rounded-lg border border-gray-200 shadow-sm mt-8 mb-8" style={{ padding: '48px 40px' }}>
+
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Should You Rent or Buy a Home?
+              </h2>
+
+              <p className="text-base text-gray-700 mb-6" style={{ lineHeight: '1.7' }}>
+                The decision to rent or buy a home is one of the most significant financial choices you'll make. Our free rent vs buy calculator helps you compare the true costs of renting versus buying, including factors like mortgage payments, property taxes, maintenance costs, and investment returns.
+              </p>
+
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4 mt-10">
+                When Buying a Home Makes Financial Sense
+              </h3>
+              <p className="text-base text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
+                Buying typically makes sense when:
+              </p>
+              <ul className="list-disc pl-6 mb-8 text-gray-700" style={{ lineHeight: '1.7' }}>
+                <li className="mb-3"><strong className="text-gray-900">Long-term stability:</strong> You plan to stay in the area for at least 5-7 years</li>
+                <li className="mb-3"><strong className="text-gray-900">Financial readiness:</strong> You have a stable income, good credit score (ideally 620+), and an emergency fund</li>
+                <li className="mb-3"><strong className="text-gray-900">Building equity:</strong> Home prices are appreciating in your market</li>
+                <li className="mb-3"><strong className="text-gray-900">Tax benefits:</strong> You can take advantage of mortgage interest deductions</li>
+                <li className="mb-3"><strong className="text-gray-900">Fixed housing costs:</strong> You prefer predictable monthly payments with a fixed-rate mortgage</li>
+              </ul>
+
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4 mt-10">
+                When Renting Makes More Financial Sense
+              </h3>
+              <p className="text-base text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
+                Renting may be the better choice when:
+              </p>
+              <ul className="list-disc pl-6 mb-8 text-gray-700" style={{ lineHeight: '1.7' }}>
+                <li className="mb-3"><strong className="text-gray-900">Flexibility needed:</strong> Your career or life situation may require relocation</li>
+                <li className="mb-3"><strong className="text-gray-900">High housing costs:</strong> The local market has inflated home prices or high property taxes</li>
+                <li className="mb-3"><strong className="text-gray-900">Investment opportunities:</strong> You can earn better returns investing the difference in the stock market</li>
+                <li className="mb-3"><strong className="text-gray-900">Credit building:</strong> You're working on improving your credit score or saving for a larger down payment</li>
+                <li className="mb-3"><strong className="text-gray-900">No maintenance burden:</strong> You prefer your landlord handle repairs and upkeep</li>
+              </ul>
+
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4 mt-10">
+                Next Steps After Using the Calculator
+              </h3>
+              <p className="text-base text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
+                Once you've compared renting vs buying, consider these next steps:
+              </p>
+              <ul className="list-disc pl-6 mb-8 text-gray-700" style={{ lineHeight: '1.7' }}>
+                <li className="mb-3"><strong className="text-gray-900">Check your credit score:</strong> A higher score means better mortgage rates and lower monthly payments</li>
+                <li className="mb-3"><strong className="text-gray-900">Get pre-approved:</strong> Know exactly how much you can borrow before house hunting</li>
+                <li className="mb-3"><strong className="text-gray-900">Compare mortgage rates:</strong> Shop around from multiple lenders for the best terms</li>
+                <li className="mb-3"><strong className="text-gray-900">Calculate true affordability:</strong> Include all costs beyond just the mortgage payment</li>
+              </ul>
+
+              <p className="text-base text-gray-700" style={{ lineHeight: '1.7' }}>
+                Ready to take the next step? Use the resources above to check your credit score or compare mortgage rates from top lenders.
+              </p>
+
+            </div>
+          </div>
+        </section>
+
         {/* Disclaimer Section */}
         <section className="py-8 bg-white">
           <div className="mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '90rem' }}>
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mt-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <h2 className="text-lg font-semibold text-gray-900 mb-3">
                 Important Disclaimer
-              </h3>
+              </h2>
               <div className="text-sm text-gray-600 space-y-3">
                 <p>
                   This calculator provides general estimates for comparison purposes only. Default values and assumptions may be outdated or may not reflect your specific situation. Actual costs, returns, and outcomes will vary based on numerous factors including but not limited to: local market conditions, individual financial circumstances, tax laws, interest rate changes, and property-specific details.

@@ -94,7 +94,7 @@ export default function ResultsDisplay({ results, inputs }: ResultsDisplayProps)
               {formatCurrency(results.netHomeEquity)}
             </p>
           </div>
-          <p className="text-sm text-gray-600 mb-4">Net Equity After Selling</p>
+          <p className="text-sm text-gray-600 mb-4">Home Equity Value</p>
 
           {/* Details */}
           <div className="space-y-2 text-sm text-gray-600 pt-4 border-t border-gray-200">

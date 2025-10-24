@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avsbee.com/sitemap.xml
